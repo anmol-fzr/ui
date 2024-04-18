@@ -3,6 +3,7 @@ import { useFormContext } from "react-hook-form"
 
 import { cx } from "../../utils/cx"
 import { Label } from "../Label/Label"
+import { Tooltip } from "../Tooltip/Tooltip"
 import { Input, InputProps } from "./Input"
 
 interface Props extends InputProps {
@@ -25,7 +26,11 @@ const FormInput = ({ label, name, className, tooltip, ...props }: Props) => {
   const styles = cx(baseClass, className)
 
   if (tooltip) {
-    props.icon = () => <IconInfoCircle />
+    ;(props as any).icon = () => (
+      <Tooltip content={tooltip}>
+        <IconInfoCircle />
+      </Tooltip>
+    )
   }
 
   return (
