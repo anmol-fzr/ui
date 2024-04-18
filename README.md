@@ -15,7 +15,7 @@
 
 </div>
 
- <h1>Form of Tremor Raw with personalized customizations</h1>
+ <h1>Fork of Tremor Raw with personalized customizations</h1>
 
 [Tremor Raw](https://raw.tremor.so/) offers customizable, accessible React components to build dashboards and modern web applications. Built on top of Tailwind CSS and Radix UI.
 
