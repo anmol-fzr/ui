@@ -1,8 +1,11 @@
+import { warn } from "console"
 import React from "react"
 import type { Meta, StoryObj } from "@storybook/react"
+import { FormProvider, useForm } from "react-hook-form"
 
 import { Button } from "../Button/Button"
 import { Label } from "../Label/Label"
+import { FormInput } from "./FormInput"
 import { Input } from "./Input"
 
 const meta: Meta<typeof Input> = {
@@ -142,6 +145,31 @@ export const Controlled: Story = {
         </Button>
         <p>{search}</p>
       </form>
+    )
+  },
+}
+
+export const HookFormInput: Story = {
+  render: () => {
+    const methods = useForm()
+    const { watch } = methods
+    const search = watch("search")
+    return (
+      <FormProvider {...methods}>
+        <form className="flex flex-col gap-2 ">
+          <FormInput
+            label="Label"
+            placeholder="Enter search"
+            id="search"
+            name="search"
+            type="search"
+          />
+          <Button type="submit" variant="secondary">
+            Submit
+          </Button>
+          <p>watch: {search}</p>
+        </form>
+      </FormProvider>
     )
   },
 }
