@@ -89,3 +89,7 @@ export const AnchorWithBadgeVariantsStyle: Story = {
     </div>
   ),
 }
+
+export const WithTooltip: Story = {
+  render: () => <Button title="Imma tooltip">Ayyo see this tooltip</Button>,
+}

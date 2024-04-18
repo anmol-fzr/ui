@@ -1,4 +1,4 @@
-// Tremor Raw Button [v0.0.0]
+// Tremor Raw Button [v0.0.0]button
 
 import React from "react"
 import { Slot } from "@radix-ui/react-slot"
@@ -7,6 +7,7 @@ import { tv, type VariantProps } from "tailwind-variants"
 
 import { cx } from "../../utils/cx"
 import { focusRing } from "../../utils/focusRing"
+import { Tooltip } from "../Tooltip/Tooltip"
 
 const buttonVariants = tv({
   base: [
@@ -88,7 +89,7 @@ interface ButtonProps
   loadingText?: string
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+const RawButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       asChild,
@@ -98,6 +99,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       disabled,
       variant,
       children,
+      title,
       ...props
     }: ButtonProps,
     forwardedRef,
@@ -129,4 +131,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   },
 )
 
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ title, ...props }: ButtonProps, forwardedRef) =>
+    title ? (
+      <Tooltip content={title}>
+        <RawButton {...props} ref={forwardedRef} />
+      </Tooltip>
+    ) : (
+      <RawButton {...props} ref={forwardedRef} />
+    ),
+)
 export { Button, buttonVariants, type ButtonProps }
