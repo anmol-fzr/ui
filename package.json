@@ -41,6 +41,7 @@
     "react-day-picker": "^8.10.1",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.3",
+    "react-modern-drawer": "^1.2.2",
     "tailwind-merge": "^2.2.2",
     "tailwind-variants": "^0.2.1"
   },
